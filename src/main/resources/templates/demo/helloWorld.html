@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<script type="text/javascript" src="../js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="../js/vue.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>hello</title>
+</head>
+<body>
+<p th:text="${helloYou}"></p>
+<div id="vuebox">
+  <p v-if="">{{message}}</p>
+  <button v-on:click="getHelloString()">点一下</button>
+</div>
+</body>
+<script th:inline="javascript">
+  var helloString = [[${helloMe}]];
+  var app = new Vue({
+    el: '#vuebox',
+    data: {
+      message: helloString
+    },
+    methods:{
+      getHelloString:function(){
+        $.ajax({
+          type:"GET",
+          url:"/demo/helloString",
+          dataType:"json",
+          success:function(data){
+            alert("好了,"+data.helloWorld);
+          },
+          error:function(data){
+            alert("错了");
+          }
+        })
+      }
+    },
+    // mounted:function () {
+    //   this.getHelloString();
+    // }
+  })
+</script>
+</html>
