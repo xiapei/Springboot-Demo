@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@10.7.10.250:1521:szsj
+    username: DCHSEAL
+    password: dchseal
+
+  freemarker:
+    suffix: .html
+    template-loader-path: classpath:/templates
